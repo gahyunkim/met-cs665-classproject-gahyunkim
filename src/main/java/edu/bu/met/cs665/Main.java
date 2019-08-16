@@ -1,13 +1,6 @@
 package edu.bu.met.cs665;
 
-import edu.bu.met.cs665.example1.Person;
-import org.apache.log4j.Logger;
-// import org.apache.log4j.PropertyConfigurator;
-
 public class Main {
-
-  private static Logger logger = Logger.getLogger(Main.class);
-
 
   /**
    * A main method to run examples.
@@ -15,30 +8,36 @@ public class Main {
    * @param args not used
    */
   public static void main(String[] args) {
+    BeverageVendingMachine beverageVendingMachine = new BeverageVendingMachine();
 
-    // This configuration is for setting up the log4j properties file.
-    // It is better to set this using java program arguments.
-    // PropertyConfigurator.configure("log4j.properties");
+    beverageVendingMachine.setBeveragePrice("Americano", 1);
+    beverageVendingMachine.setBeveragePrice("Espresso", 3);
+    beverageVendingMachine.setBeveragePrice("Latte Macchiato", 1);
+    beverageVendingMachine.setBeveragePrice("Black Tea", 2);
+    beverageVendingMachine.setBeveragePrice("Yellow Tea", 2);
+    beverageVendingMachine.setBeveragePrice("Green Tea", 1);
 
-    // Let us create an object of the Main class.
-    Main m = new Main();
+    beverageVendingMachine.initialize();
+    beverageVendingMachine.getStateSummary();
 
-    logger.info(m.doIt());
+    beverageVendingMachine.brew("Latte Macchiato");
+    beverageVendingMachine.serve();
 
-    logger.trace("Trace Message!");
-    logger.debug("Debug Message!");
-    logger.info("Info Message!");
-    logger.warn("Warn Message!");
-    logger.error("Error Message!");
-    logger.fatal("Fatal Message!");
+    beverageVendingMachine.brew("Espresso");
+    beverageVendingMachine.serve();
 
+    beverageVendingMachine.brew("Americano");
+    beverageVendingMachine.serve();
+
+    beverageVendingMachine.brew("Black Tea");
+    beverageVendingMachine.serve();
+
+    beverageVendingMachine.brew("Green Tea");
+    beverageVendingMachine.serve();
+
+    beverageVendingMachine.brew("Yellow Tea");
+    beverageVendingMachine.serve();
+
+    beverageVendingMachine.getStateSummary();
   }
-
-
-
-  private String doIt() {
-    Person student = new Person("John", "Doe");
-    return student.getLastName() + ',' + student.getLastName();
-  }
-
 }
