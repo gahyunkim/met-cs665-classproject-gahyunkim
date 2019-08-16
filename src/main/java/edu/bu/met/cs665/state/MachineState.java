@@ -1,6 +1,6 @@
 package edu.bu.met.cs665.state;
 
-public interface State {
+public interface MachineState {
 
   void initialize();
 

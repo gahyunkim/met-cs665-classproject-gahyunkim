@@ -2,19 +2,19 @@ package edu.bu.met.cs665;
 
 import edu.bu.met.cs665.beverages.Beverage;
 
-import edu.bu.met.cs665.state.BrewingState;
-import edu.bu.met.cs665.state.ReadyState;
-import edu.bu.met.cs665.state.State;
-import edu.bu.met.cs665.state.UninitializedState;
+import edu.bu.met.cs665.state.BrewingMachineState;
+import edu.bu.met.cs665.state.ReadyMachineState;
+import edu.bu.met.cs665.state.MachineState;
+import edu.bu.met.cs665.state.UninitializedMachineState;
 import java.util.List;
 
 public class BeverageVendingMachine {
 
-  private State state;
+  private MachineState machineState;
 
-  private UninitializedState uninitializedState;
-  private ReadyState readyState;
-  private BrewingState brewingState;
+  private UninitializedMachineState uninitializedState;
+  private ReadyMachineState readyState;
+  private BrewingMachineState brewingState;
 
   private Beverage beverage;
   private int defaultPrice = 2;
@@ -22,15 +22,15 @@ public class BeverageVendingMachine {
   private List<Beverage> beverageList;
 
   public BeverageVendingMachine() {
-    uninitializedState = new UninitializedState(this);
-    readyState = new ReadyState(this);
-    brewingState = new BrewingState(this);
+    uninitializedState = new UninitializedMachineState(this);
+    readyState = new ReadyMachineState(this);
+    brewingState = new BrewingMachineState(this);
 
-    state = uninitializedState;
+    machineState = uninitializedState;
   }
 
   public void initialize() {
-    state.initialize();
+    machineState.initialize();
   }
 
   public void printBeverageList() {
@@ -46,30 +46,30 @@ public class BeverageVendingMachine {
   }
 
   public void brew(String beverageName) {
-    state.brew(beverageName);
+    machineState.brew(beverageName);
   }
 
   public void serve() {
-    state.serve();
+    machineState.serve();
   }
 
-  public String getState() {
-    return state.getState();
+  public String getMachineState() {
+    return machineState.getState();
   }
 
-  public void setState(State state) {
-    this.state = state;
+  public void setMachineState(MachineState machineState) {
+    this.machineState = machineState;
   }
 
-  public State getUninitializedState() {
+  public MachineState getUninitializedState() {
     return uninitializedState;
   }
 
-  public State getBrewingState() {
+  public MachineState getBrewingState() {
     return brewingState;
   }
 
-  public State getReadyState() {
+  public MachineState getReadyState() {
     return readyState;
   }
 
@@ -115,15 +115,15 @@ public class BeverageVendingMachine {
   }
 
   public boolean isInitialized() {
-    return state != uninitializedState;
+    return machineState != uninitializedState;
   }
 
   public boolean isReady() {
-    return state == readyState;
+    return machineState == readyState;
   }
 
   public boolean isBrewing() {
-    return state == brewingState;
+    return machineState == brewingState;
   }
 
   public List<Beverage> getBeverageList() {

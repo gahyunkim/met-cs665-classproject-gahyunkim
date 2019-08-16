@@ -3,11 +3,11 @@ package edu.bu.met.cs665.state;
 import edu.bu.met.cs665.BeverageVendingMachine;
 import edu.bu.met.cs665.beverages.Beverage;
 
-public class BrewingState implements State {
+public class BrewingMachineState implements MachineState {
 
   private BeverageVendingMachine vendingMachine;
 
-  public BrewingState(BeverageVendingMachine vendingMachine) {
+  public BrewingMachineState(BeverageVendingMachine vendingMachine) {
     this.vendingMachine = vendingMachine;
   }
 
@@ -26,7 +26,7 @@ public class BrewingState implements State {
     System.out.println("------------------------------------------");
 
     vendingMachine.requestBeverage();
-    vendingMachine.setState(vendingMachine.getReadyState());
+    vendingMachine.setMachineState(vendingMachine.getReadyState());
   }
 
   public String getState() {

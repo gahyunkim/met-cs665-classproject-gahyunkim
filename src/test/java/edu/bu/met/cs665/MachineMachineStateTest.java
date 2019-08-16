@@ -2,11 +2,10 @@ package edu.bu.met.cs665;
 
 import static org.junit.Assert.*;
 
-import edu.bu.met.cs665.beverages.Beverage;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MachineStateTest {
+public class MachineMachineStateTest {
 
   BeverageVendingMachine vendingMachine;
 
@@ -24,14 +23,14 @@ public class MachineStateTest {
 
   @Test
   public void getStateSummary() {
-    String state = vendingMachine.getState();
+    String state = vendingMachine.getMachineState();
     assertTrue(state.equals("Uninitialized"));
   }
 
   @Test
   public void getStateSummaryAfterInitialization() {
     vendingMachine.initialize();
-    String state = vendingMachine.getState();
+    String state = vendingMachine.getMachineState();
     assertTrue(state.equals("Ready"));
   }
 
@@ -39,7 +38,7 @@ public class MachineStateTest {
   public void getStateSummaryDuringBrew() {
     vendingMachine.initialize();
     vendingMachine.brew("Americano");
-    String state = vendingMachine.getState();
+    String state = vendingMachine.getMachineState();
     assertTrue(state.equals("Brewing"));
   }
 
@@ -49,7 +48,7 @@ public class MachineStateTest {
     vendingMachine.brew("Americano");
     vendingMachine.serve();
 
-    String state = vendingMachine.getState();
+    String state = vendingMachine.getMachineState();
     assertTrue(state.equals("Ready"));
   }
 }

@@ -18,7 +18,7 @@ public class Main {
     beverageVendingMachine.setBeveragePrice("Green Tea", 1);
 
     beverageVendingMachine.initialize();
-    beverageVendingMachine.getState();
+    beverageVendingMachine.getMachineState();
 
     beverageVendingMachine.brew("Latte Macchiato");
     beverageVendingMachine.serve();
@@ -38,6 +38,6 @@ public class Main {
     beverageVendingMachine.brew("Yellow Tea");
     beverageVendingMachine.serve();
 
-    beverageVendingMachine.getState();
+    beverageVendingMachine.getMachineState();
   }
 }

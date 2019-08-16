@@ -11,18 +11,18 @@ import edu.bu.met.cs665.beverages.tea.YellowTea;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UninitializedState implements State {
+public class UninitializedMachineState implements MachineState {
 
   BeverageVendingMachine vendingMachine;
 
-  public UninitializedState(BeverageVendingMachine vendingMachine) {
+  public UninitializedMachineState(BeverageVendingMachine vendingMachine) {
     this.vendingMachine = vendingMachine;
   }
 
   public void initialize() {
     addBeverages();
     setDefaultBeveragePrices();
-    vendingMachine.setState(vendingMachine.getReadyState());
+    vendingMachine.setMachineState(vendingMachine.getReadyState());
   }
 
   private void addBeverages() {
