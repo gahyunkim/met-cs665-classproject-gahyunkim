@@ -17,12 +17,12 @@ public class ReadyMachineState implements MachineState {
   }
 
   public void brew(String beverageName) {
-    Beverage beverage = vendingMachine.findBeverage(beverageName);
+    Beverage beverage = vendingMachine.getBeverage(beverageName);
     if (beverage != null) {
       System.out.println("\n" + beverageName + " costs $" + beverage.getPrice());
       System.out.println("------------------------------------------");
       System.out.println("Starting brew process for " + beverageName + "!");
-      vendingMachine.setBeverage(beverage);
+      vendingMachine.setBeverageBrewing(beverage);
       vendingMachine.setMachineState(vendingMachine.getBrewingState());
     }
   }

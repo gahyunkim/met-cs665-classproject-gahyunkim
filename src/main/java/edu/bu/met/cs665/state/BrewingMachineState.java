@@ -17,7 +17,7 @@ public class BrewingMachineState implements MachineState {
 
   public void brew(String beverageName) {
     System.out.println("Please wait, busy brewing a beverage");
-    Beverage beverage = vendingMachine.getBeverage();
+    Beverage beverage = vendingMachine.getBeverageBrewing();
     beverage.make();
   }
 

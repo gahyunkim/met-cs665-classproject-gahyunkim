@@ -17,7 +17,7 @@ public class BeverageVendingMachine {
   private ReadyMachineState readyState;
   private BrewingMachineState brewingState;
 
-  private Beverage beverage;
+  private Beverage beverageBrewing;
   private int defaultPrice = 2;
 
   private List<Beverage> beverageList;
@@ -76,15 +76,15 @@ public class BeverageVendingMachine {
     return readyState;
   }
 
-  public void setBeverage(Beverage beverage) {
-    this.beverage = beverage;
+  public void setBeverageBrewing(Beverage beverageBrewing) {
+    this.beverageBrewing = beverageBrewing;
   }
 
-  public Beverage getBeverage() {
-    return beverage;
+  public Beverage getBeverageBrewing() {
+    return beverageBrewing;
   }
 
-  public Beverage findBeverage(String beverageName) {
+  public Beverage getBeverage(String beverageName) {
     for (Beverage beverage : beverageList) {
       if (beverage.getName().equals(beverageName)) {
         return beverage;
@@ -95,12 +95,12 @@ public class BeverageVendingMachine {
   }
 
   public void setBeveragePrice(String beverageName, int price) {
-    Beverage beverage = findBeverage(beverageName);
+    Beverage beverage = getBeverage(beverageName);
     beverage.setPrice(price);
   }
 
   public int getBeveragePrice(String beverageName) {
-    Beverage beverage = findBeverage(beverageName);
+    Beverage beverage = getBeverage(beverageName);
     if (beverage != null) {
       int price = beverage.getPrice();
       System.out.println("Beverage price of " + beverageName + ": " + price);
