@@ -6,6 +6,7 @@ import edu.bu.met.cs665.state.BrewingMachineState;
 import edu.bu.met.cs665.state.MachineState;
 import edu.bu.met.cs665.state.ReadyMachineState;
 import edu.bu.met.cs665.state.UninitializedMachineState;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BeverageVendingMachine {
@@ -27,6 +28,8 @@ public class BeverageVendingMachine {
     brewingState = new BrewingMachineState(this);
 
     machineState = uninitializedState;
+
+    beverageList = new ArrayList<>();
   }
 
   public void initialize() {
