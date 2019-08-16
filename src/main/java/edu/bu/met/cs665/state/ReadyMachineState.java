@@ -17,7 +17,7 @@ public class ReadyMachineState implements MachineState {
   }
 
   public void brew(String beverageName) {
-    Beverage beverage = vendingMachine.getBeverage(beverageName);
+    Beverage beverage = vendingMachine.findBeverage(beverageName);
     if (beverage != null) {
       System.out.println("\n" + beverageName + " costs $" + beverage.getPrice());
       System.out.println("------------------------------------------");

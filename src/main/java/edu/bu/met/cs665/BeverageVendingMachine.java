@@ -3,8 +3,8 @@ package edu.bu.met.cs665;
 import edu.bu.met.cs665.beverages.Beverage;
 
 import edu.bu.met.cs665.state.BrewingMachineState;
-import edu.bu.met.cs665.state.ReadyMachineState;
 import edu.bu.met.cs665.state.MachineState;
+import edu.bu.met.cs665.state.ReadyMachineState;
 import edu.bu.met.cs665.state.UninitializedMachineState;
 import java.util.List;
 
@@ -81,13 +81,23 @@ public class BeverageVendingMachine {
     return beverage;
   }
 
+  public Beverage findBeverage(String beverageName) {
+    for (Beverage beverage : beverageList) {
+      if (beverage.getName().equals(beverageName)) {
+        return beverage;
+      }
+    }
+    System.out.println("Beverage not found");
+    return null;
+  }
+
   public void setBeveragePrice(String beverageName, int price) {
-    Beverage beverage = getBeverage(beverageName);
+    Beverage beverage = findBeverage(beverageName);
     beverage.setPrice(price);
   }
 
   public int getBeveragePrice(String beverageName) {
-    Beverage beverage = getBeverage(beverageName);
+    Beverage beverage = findBeverage(beverageName);
     if (beverage != null) {
       int price = beverage.getPrice();
       System.out.println("Beverage price of " + beverageName + ": " + price);
@@ -102,16 +112,6 @@ public class BeverageVendingMachine {
 
   public void setDefaultPrice(int defaultPrice) {
     this.defaultPrice = defaultPrice;
-  }
-
-  public Beverage getBeverage(String beverageName) {
-    for (Beverage beverage : beverageList) {
-      if (beverage.getName().equals(beverageName)) {
-        return beverage;
-      }
-    }
-    System.out.println("Beverage not found");
-    return null;
   }
 
   public boolean isInitialized() {
