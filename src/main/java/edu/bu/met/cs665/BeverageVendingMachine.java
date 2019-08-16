@@ -6,7 +6,6 @@ import edu.bu.met.cs665.state.BrewingMachineState;
 import edu.bu.met.cs665.state.MachineState;
 import edu.bu.met.cs665.state.ReadyMachineState;
 import edu.bu.met.cs665.state.UninitializedMachineState;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BeverageVendingMachine {
@@ -20,7 +19,7 @@ public class BeverageVendingMachine {
   private Beverage beverageBrewing;
   private int defaultPrice = 2;
 
-  private List<Beverage> beverageList;
+  private BeverageInventory inventory;
 
   public BeverageVendingMachine() {
     uninitializedState = new UninitializedMachineState(this);
@@ -29,7 +28,7 @@ public class BeverageVendingMachine {
 
     machineState = uninitializedState;
 
-    beverageList = new ArrayList<>();
+    inventory = new BeverageInventory();
   }
 
   public void initialize() {
@@ -37,7 +36,7 @@ public class BeverageVendingMachine {
   }
 
   public void printBeverageList() {
-    for (Beverage beverage : beverageList) {
+    for (Beverage beverage : inventory.getBeverages()) {
       System.out.println(beverage.getName());
     }
   }
@@ -85,7 +84,7 @@ public class BeverageVendingMachine {
   }
 
   public Beverage getBeverage(String beverageName) {
-    for (Beverage beverage : beverageList) {
+    for (Beverage beverage : inventory.getBeverages()) {
       if (beverage.getName().equals(beverageName)) {
         return beverage;
       }
@@ -130,11 +129,23 @@ public class BeverageVendingMachine {
   }
 
   public List<Beverage> getBeverageList() {
-    return beverageList;
+    return inventory.getBeverages();
   }
 
-  public void setBeverageList(List<Beverage> beverageList) {
-    this.beverageList = beverageList;
+  public BeverageInventory getInventory() { return inventory; }
+
+  public void stock() {
+    inventory.stock();
   }
 
+  public void stock(String beverageName) {
+    Beverage beverage = getBeverage(beverageName);
+    if (beverage != null) {
+      inventory.stockBeverage(beverage);
+    }
+  }
+
+  public void stock(List<Beverage> beverageList) {
+     inventory.stock(beverageList);
+  }
 }

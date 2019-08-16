@@ -1,5 +1,6 @@
 package edu.bu.met.cs665.state;
 
+import edu.bu.met.cs665.BeverageInventory;
 import edu.bu.met.cs665.BeverageVendingMachine;
 import edu.bu.met.cs665.beverages.Beverage;
 
@@ -17,8 +18,6 @@ public class BrewingMachineState implements MachineState {
 
   public void brew(String beverageName) {
     System.out.println("Please wait, busy brewing a beverage");
-    Beverage beverage = vendingMachine.getBeverageBrewing();
-    beverage.make();
   }
 
   public void serve() {

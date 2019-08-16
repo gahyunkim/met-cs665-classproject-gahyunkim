@@ -1,5 +1,6 @@
 package edu.bu.met.cs665.state;
 
+import edu.bu.met.cs665.BeverageInventory;
 import edu.bu.met.cs665.BeverageVendingMachine;
 import edu.bu.met.cs665.beverages.Beverage;
 
@@ -18,13 +19,26 @@ public class ReadyMachineState implements MachineState {
 
   public void brew(String beverageName) {
     Beverage beverage = vendingMachine.getBeverage(beverageName);
-    if (beverage != null) {
+    if (beverage != null && available(beverage)) {
+
       System.out.println("\n" + beverageName + " costs $" + beverage.getPrice());
       System.out.println("------------------------------------------");
       System.out.println("Starting brew process for " + beverageName + "!");
-      vendingMachine.setBeverageBrewing(beverage);
+
+      BeverageInventory inventory = vendingMachine.getInventory();
+      inventory.decrementBeverage(beverage);
+      beverage.make();
       vendingMachine.setMachineState(vendingMachine.getBrewingState());
     }
+  }
+
+  private boolean available(Beverage beverage) {
+    if (vendingMachine.getInventory().getCount(beverage) == 0) {
+      System.out.println("Sorry, we are out of " + beverage.getName());
+      System.out.println("Need to restock!");
+      return false;
+    }
+    return true;
   }
 
   public void serve() {

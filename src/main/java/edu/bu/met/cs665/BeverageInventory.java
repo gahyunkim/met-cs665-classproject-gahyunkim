@@ -1,12 +1,7 @@
 package edu.bu.met.cs665;
 
 import edu.bu.met.cs665.beverages.Beverage;
-import edu.bu.met.cs665.beverages.coffee.Americano;
-import edu.bu.met.cs665.beverages.coffee.Espresso;
-import edu.bu.met.cs665.beverages.coffee.LatteMacchiato;
-import edu.bu.met.cs665.beverages.tea.BlackTea;
-import edu.bu.met.cs665.beverages.tea.GreenTea;
-import edu.bu.met.cs665.beverages.tea.YellowTea;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,6 +41,12 @@ public class BeverageInventory {
   public void decrementBeverage(Beverage beverage) {
     int currentCount = inventory.get(beverage);
     inventory.put(beverage, --currentCount);
+  }
+
+  public List<Beverage> getBeverages() {
+    List<Beverage> beverages = new ArrayList<>();
+    beverages.addAll(inventory.keySet());
+    return beverages;
   }
 
   public void setInventory(HashMap<Beverage, Integer> inventory) {

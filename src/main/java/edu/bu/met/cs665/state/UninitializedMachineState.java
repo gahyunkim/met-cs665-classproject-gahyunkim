@@ -35,7 +35,7 @@ public class UninitializedMachineState implements MachineState {
     beverageList.add(new GreenTea());
     beverageList.add(new YellowTea());
 
-    vendingMachine.setBeverageList(beverageList);
+    vendingMachine.stock(beverageList);
   }
 
   private void setDefaultBeveragePrices() {

@@ -9,6 +9,7 @@ public class Main {
    */
   public static void main(String[] args) {
     BeverageVendingMachine beverageVendingMachine = new BeverageVendingMachine();
+    beverageVendingMachine.initialize();
 
     beverageVendingMachine.setBeveragePrice("Americano", 1);
     beverageVendingMachine.setBeveragePrice("Espresso", 3);
@@ -16,9 +17,6 @@ public class Main {
     beverageVendingMachine.setBeveragePrice("Black Tea", 2);
     beverageVendingMachine.setBeveragePrice("Yellow Tea", 2);
     beverageVendingMachine.setBeveragePrice("Green Tea", 1);
-
-    beverageVendingMachine.initialize();
-    beverageVendingMachine.getMachineState();
 
     beverageVendingMachine.brew("Latte Macchiato");
     beverageVendingMachine.serve();
@@ -37,7 +35,5 @@ public class Main {
 
     beverageVendingMachine.brew("Yellow Tea");
     beverageVendingMachine.serve();
-
-    beverageVendingMachine.getMachineState();
   }
 }
