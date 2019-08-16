@@ -4,7 +4,7 @@ public class Main {
 
   /**
    * A main method to run examples.
-   *
+   * 
    * @param args not used
    */
   public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class Main {
     beverageVendingMachine.setBeveragePrice("Green Tea", 1);
 
     beverageVendingMachine.initialize();
-    beverageVendingMachine.getStateSummary();
+    beverageVendingMachine.getState();
 
     beverageVendingMachine.brew("Latte Macchiato");
     beverageVendingMachine.serve();
@@ -38,6 +38,6 @@ public class Main {
     beverageVendingMachine.brew("Yellow Tea");
     beverageVendingMachine.serve();
 
-    beverageVendingMachine.getStateSummary();
+    beverageVendingMachine.getState();
   }
 }

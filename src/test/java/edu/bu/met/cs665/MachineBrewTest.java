@@ -1,7 +1,6 @@
 package edu.bu.met.cs665;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,12 +12,6 @@ public class MachineBrewTest {
   @Before
   public void setUp() {
     beverageVendingMachine = new BeverageVendingMachine();
-    beverageVendingMachine.setBeveragePrice("Americano", 1);
-    beverageVendingMachine.setBeveragePrice("Espresso", 3);
-    beverageVendingMachine.setBeveragePrice("Latte Macchiato", 1);
-    beverageVendingMachine.setBeveragePrice("Black Tea", 2);
-    beverageVendingMachine.setBeveragePrice("Yellow Tea", 2);
-    beverageVendingMachine.setBeveragePrice("Green Tea", 1);
   }
 
   @Test
