@@ -13,18 +13,22 @@ import java.util.List;
 
 public class UninitializedMachineState implements MachineState {
 
-  BeverageVendingMachine vendingMachine;
+  private BeverageVendingMachine vendingMachine;
 
   public UninitializedMachineState(BeverageVendingMachine vendingMachine) {
     this.vendingMachine = vendingMachine;
   }
 
+  // Adds and stocks beverages
+  // Sets default price
+  // Sets next state to ready state
   public void initialize() {
     addBeverages();
     setDefaultBeveragePrices();
     vendingMachine.setMachineState(vendingMachine.getReadyState());
   }
 
+  // Adds beverages to inventory and stocks
   private void addBeverages() {
     List<Beverage> beverageList = new ArrayList<Beverage>();
 
@@ -38,6 +42,7 @@ public class UninitializedMachineState implements MachineState {
     vendingMachine.stock(beverageList);
   }
 
+  // Sets same default price for all beverages
   private void setDefaultBeveragePrices() {
     int price = vendingMachine.getDefaultPrice();
     for (Beverage beverage : vendingMachine.getBeverageList()) {
@@ -46,10 +51,12 @@ public class UninitializedMachineState implements MachineState {
     }
   }
 
+  // Cannot brew without finishing initialization
   public void brew(String beverageName) {
     System.out.println("Cannot brew, not fully initialized yet");
   }
 
+  // Cannot serve without finishing initialization
   public void serve() {
     System.out.println("Cannot serve, not fully initialized yet");
   }

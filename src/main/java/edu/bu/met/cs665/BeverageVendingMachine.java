@@ -20,6 +20,7 @@ public class BeverageVendingMachine {
 
   private BeverageInventory inventory;
 
+  // Creates machine with states and inventory
   public BeverageVendingMachine() {
     uninitializedState = new UninitializedMachineState(this);
     readyState = new ReadyMachineState(this);
@@ -30,20 +31,24 @@ public class BeverageVendingMachine {
     inventory = new BeverageInventory();
   }
 
+  // Initializes machine
   public void initialize() {
     machineState.initialize();
   }
 
+  // Requests user for beverage
   public void requestBeverage() {
     System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     System.out.println("What beverage would you like?");
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 
+  // Brews specified beverage
   public void brew(String beverageName) {
     machineState.brew(beverageName);
   }
 
+  // Serves brewed beverage
   public void serve() {
     machineState.serve();
   }
@@ -68,6 +73,7 @@ public class BeverageVendingMachine {
     return readyState;
   }
 
+  // Returns Beverage object in list given string name
   public Beverage getBeverage(String beverageName) {
     for (Beverage beverage : inventory.getBeverages()) {
       if (beverage.getName().equals(beverageName)) {
@@ -83,6 +89,8 @@ public class BeverageVendingMachine {
     beverage.setPrice(price);
   }
 
+  // Retrieves price of beverage
+  // If not found, return s-1
   public int getBeveragePrice(String beverageName) {
     Beverage beverage = getBeverage(beverageName);
     if (beverage != null) {
@@ -119,10 +127,12 @@ public class BeverageVendingMachine {
 
   public BeverageInventory getInventory() { return inventory; }
 
+  // Stocks beverages in inventory
   public void stock() {
     inventory.stock();
   }
 
+  // Stocks given beverage in inventory
   public void stock(String beverageName) {
     Beverage beverage = getBeverage(beverageName);
     if (beverage != null) {
@@ -130,6 +140,7 @@ public class BeverageVendingMachine {
     }
   }
 
+  // Stocks given list of beverages
   public void stock(List<Beverage> beverageList) {
      inventory.stock(beverageList);
   }

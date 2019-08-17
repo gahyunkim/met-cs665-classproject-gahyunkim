@@ -6,17 +6,21 @@ import edu.bu.met.cs665.beverages.Beverage;
 
 public class ReadyMachineState implements MachineState {
 
-  BeverageVendingMachine vendingMachine;
+  private BeverageVendingMachine vendingMachine;
 
   public ReadyMachineState(BeverageVendingMachine vendingMachine) {
     this.vendingMachine = vendingMachine;
   }
 
+  // Already initialized and ready to accept and brew a beverage
   public void initialize() {
     System.out.println("Machine already initialized");
     vendingMachine.requestBeverage();
   }
 
+  // Finds appropriate beverage
+  // Prints out listed cost
+  // If beverage is available, starts brew process and sets to brewing state
   public void brew(String beverageName) {
     Beverage beverage = vendingMachine.getBeverage(beverageName);
     if (beverage != null && available(beverage)) {
@@ -32,6 +36,7 @@ public class ReadyMachineState implements MachineState {
     }
   }
 
+  // Checks availability of beverage using machine's inventory.
   private boolean available(Beverage beverage) {
     if (vendingMachine.getInventory().getCount(beverage) == 0) {
       System.out.println("Sorry, we are out of " + beverage.getName());
@@ -41,6 +46,7 @@ public class ReadyMachineState implements MachineState {
     return true;
   }
 
+  // Cannot serve without specified beverage to brew
   public void serve() {
     System.out.println("Please specify which beverage to brew");
   }
