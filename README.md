@@ -1,123 +1,70 @@
-# Project Template
+# Assignment 6
 
-This is a Java Maven Project Template
+#### Clean Your Code: Refactoring
+Gahyun (Susie) Kim
 
+## Review Code and Identify Refactoring Points
 
-# How to compile the project
+The assignment I chose to review for refactor is Assignment #1: 
+Fully Automatic Beverage Vending Machine. The main reason I selected this project 
+is that I did not use any design patterns and did not do much refactoring after the initial 
+implementation. Using design pattern goals, I was able to identify refactor areas and apply 
+design patterns to simplify my implementation. 
 
-We use Apache Maven to compile and run this project. 
+### Refactoring Points
 
-You need to install Apache Maven (https://maven.apache.org/)  on your system. 
+#### #1: Bloated Methods 
+When reviewing the application, I first read through the BeverageVendingMachine. Here, I found 
+a couple bloaters in my brew and serve methods. The body of these methods included condition 
+checks to evaluate the machine state and determine if it was valid to execute the appropriate 
+actions. As a result, there were several if/else statements that potentially add logical 
+complexity for new engineers understanding the application. 
 
-Type on the command line: 
+#### #2: Replace Data Value for Object
+Following on the first problem of inefficient state management of the machine, the state 
+information was ineffectively tracked by storing this information as boolean member variables. 
+Using boolean variables to track the machine’s initialization, ready, and brewing status was 
+tiresome and added logical complexity when implementing the methods. In the brew method, I used 
+two of the member variables to check if the machine was initialized and ready. 
 
-```bash
-mvn clean compile
-```
+Ideally, at most, I would at most only want to check that the machine is ready. However, since the 
+machine can be in any state for this method in this class, I needed to place an extra check as it 
+could be called without initialization (proper setup).
 
-# How to create a binary runnable package 
+#### #3: Replace Array with Object
+Lastly, I noticed that the array of beverages stored in the machine may be inflexible and 
+inefficient as demand for functionality increases. For example, the application may need to 
+keep inventory of the beverages and other details about each beverage. If we kept the way we 
+stored details about the beverage as an array, we may need to add more business logic onto 
+many methods in the vending machine, creating further complexity.
 
+### Refactor Strategy
+To resolve these identified refactoring points, I first applied the State pattern to tackle the 
+first two points that related to how the machine’s state was stored and processed in the methods. 
+By using this pattern, this would remove many of the condition checks in the machine’s methods 
+and move this responsibility to the different states to execute the appropriate state transition. 
+This enhances readability substantially. Furthermore, the machine would can use just one member 
+variable to keep track of its state, instead of several boolean variables. 
 
-```bash
-mvn clean compile assembly:single
-```
+I created a MachineState interface that includes initialize, brew, serve, and get. Then, I created 
+three classes to implement these methods: UninitializedMachineState, ReadyMachineState, and 
+BrewingMachineState. These classes only needed minimal checks using the machine’s information, 
+such as its default price. Since these classes are only used when it is in its appropriate state, 
+much of the initial duplicated logic is removed.
 
+Finally, to resolve the third point, I replaced the beverages array with its own inventory class 
+object that would handle more sophisticated business logic. I created the BeverageInventory class 
+and as an example, added a capability to track the amount of beverages available and restock. 
+By creating a more customized container for the offered beverages, we have more flexibility in 
+adding more functionality and avoid adding more responsibilities and bloated methods to the 
+vending machine.
 
-# How to run
+_**Note_: for the simplicity of the refactored machine system’s UML, I did not include the beverage subclasses and its implementations
 
-```bash
-mvn -q clean compile exec:java -Dexec.executable="edu.bu.met.cs665.Main" -Dlog4j.configuration="file:log4j.properties"
-```
+## Solution Description and Code Change
 
-We recommand the above command for running the project. 
+### Refactored UML
+![Alt text](refactor_uml.png?raw=true)
 
-Alternativly, you can run the following command. It will generate a single jar file with all of the dependencies. 
-
-```bash
-mvn clean compile assembly:single
-
-java -Dlog4j.configuration=file:log4j.properties -classpath ./target/JavaProjectTemplate-1.0-SNAPSHOT-jar-with-dependencies.jar  edu.bu.met.cs665.Main
-```
-
-
-# Run all the unit test classes.
-
-
-```bash
-mvn clean compile test
-
-```
-
-# Using Findbugs 
-
-To see bug detail using the Findbugs GUI, use the following command "mvn findbugs:gui"
-
-Or you can create a XML report by using  
-
-
-```bash
-mvn findbugs:gui 
-```
-
-or 
-
-
-```bash
-mvn findbugs:findbugs
-```
-
-
-For more info about FindBugs see 
-
-http://findbugs.sourceforge.net/
-
-And about Maven Findbug plugin see 
-https://gleclaire.github.io/findbugs-maven-plugin/index.html
-
-
-You can install Findbugs Eclipse Plugin 
-
-http://findbugs.sourceforge.net/manual/eclipse.html
-
-
-
-SpotBugs https://spotbugs.github.io/ is the spiritual successor of FindBugs.
-
-
-# Run Checkstyle 
-
-CheckStyle code styling configuration files are in config/ directory. Maven checkstyle plugin is set to use google code style. 
-You can change it to other styles like sun checkstyle. 
-
-To analyze this example using CheckStyle run 
-
-```bash
-mvn checkstyle:check
-```
-
-This will generate a report in XML format
-
-
-```bash
-target/checkstyle-checker.xml
-target/checkstyle-result.xml
-```
-
-and the following command will generate a report in HTML format that you can open it using a Web browser. 
-
-```bash
-mvn checkstyle:checkstyle
-```
-
-```bash
-target/site/checkstyle.html
-```
-
-
-# Generate  coveralls:report 
-
-```bash
-mvn -DrepoToken=YOUR-REPO-TOCKEN-ON-COVERALLS  cobertura:cobertura coveralls:report
-```
-
-
+### Original UML
+![Alt text](original_uml.png?raw=true)
