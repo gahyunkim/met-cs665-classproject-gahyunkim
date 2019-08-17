@@ -28,7 +28,7 @@ public class BrewingMachineState implements MachineState {
     vendingMachine.setMachineState(vendingMachine.getReadyState());
   }
 
-  public String getState() {
+  public String get() {
     String state = "Brewing";
     System.out.println(state);
     return state;

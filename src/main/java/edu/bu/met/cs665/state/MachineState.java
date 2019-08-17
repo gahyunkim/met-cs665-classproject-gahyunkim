@@ -8,5 +8,5 @@ public interface MachineState {
 
   void serve();
 
-  String getState();
+  String get();
 }

@@ -45,7 +45,7 @@ public class ReadyMachineState implements MachineState {
     System.out.println("Please specify which beverage to brew");
   }
 
-  public String getState() {
+  public String get() {
     String state = "Ready";
     System.out.println(state);
     return state;

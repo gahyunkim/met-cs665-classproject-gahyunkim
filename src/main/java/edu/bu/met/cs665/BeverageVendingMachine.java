@@ -16,7 +16,6 @@ public class BeverageVendingMachine {
   private ReadyMachineState readyState;
   private BrewingMachineState brewingState;
 
-  private Beverage beverageBrewing;
   private int defaultPrice = 2;
 
   private BeverageInventory inventory;
@@ -35,12 +34,6 @@ public class BeverageVendingMachine {
     machineState.initialize();
   }
 
-  public void printBeverageList() {
-    for (Beverage beverage : inventory.getBeverages()) {
-      System.out.println(beverage.getName());
-    }
-  }
-
   public void requestBeverage() {
     System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     System.out.println("What beverage would you like?");
@@ -56,7 +49,7 @@ public class BeverageVendingMachine {
   }
 
   public String getMachineState() {
-    return machineState.getState();
+    return machineState.get();
   }
 
   public void setMachineState(MachineState machineState) {
@@ -73,14 +66,6 @@ public class BeverageVendingMachine {
 
   public MachineState getReadyState() {
     return readyState;
-  }
-
-  public void setBeverageBrewing(Beverage beverageBrewing) {
-    this.beverageBrewing = beverageBrewing;
-  }
-
-  public Beverage getBeverageBrewing() {
-    return beverageBrewing;
   }
 
   public Beverage getBeverage(String beverageName) {

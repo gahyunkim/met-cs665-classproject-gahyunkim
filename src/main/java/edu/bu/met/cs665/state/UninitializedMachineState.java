@@ -54,7 +54,7 @@ public class UninitializedMachineState implements MachineState {
     System.out.println("Cannot serve, not fully initialized yet");
   }
 
-  public String getState() {
+  public String get() {
     String state = "Uninitialized";
     System.out.println(state);
     return state;
