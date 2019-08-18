@@ -1,12 +1,13 @@
 package edu.bu.met.cs665.states;
 
 import edu.bu.met.cs665.Aircraft;
+import edu.bu.met.cs665.parts.Part;
 
-public class HealthyAircraftState implements AircraftState {
+public class WarningAircraftState implements AircraftState {
   private Aircraft aircraft;
-  private int yearsUntilMaintenance;
+  private Part warningPart;
 
-  public HealthyAircraftState(Aircraft aircraft) {
+  public WarningAircraftState(Aircraft aircraft) {
     this.aircraft = aircraft;
   }
 
