@@ -8,19 +8,19 @@ public interface Part {
 
   int getLifespan();
 
-   void setStartDate(LocalDate date);
+  void setStartDate(LocalDate date);
 
-   LocalDate getStartDate();
+  LocalDate getStartDate();
 
-   void setBuffer(int buffer);
+  void setBuffer(int buffer);
 
-   int getBuffer();
+  int getBuffer();
 
-   void setName(String name);
+  void setName(String name);
 
-   String getName();
+  String getName();
 
-   String checkHealth(LocalDate date);
+  String checkHealth(LocalDate date);
 
-   int getYearsLeft(LocalDate date);
+  int getYearsLeft(LocalDate date);
 }
