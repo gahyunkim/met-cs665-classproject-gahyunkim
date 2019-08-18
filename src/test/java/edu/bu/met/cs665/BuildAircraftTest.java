@@ -56,4 +56,5 @@ public class AircraftTest {
     assertEquals(engineThrust, F22.getEngineThrust());
     assertEquals(weight, F22.getWeight());
   }
+  
 }
