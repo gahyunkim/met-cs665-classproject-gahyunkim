@@ -10,4 +10,6 @@ public interface AircraftState {
 
   void performMaintenance();
 
+  String get();
+
 }

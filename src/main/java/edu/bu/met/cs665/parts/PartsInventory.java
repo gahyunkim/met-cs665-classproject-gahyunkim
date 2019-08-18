@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class PartsInventory {
+public class PartsInventory extends MaintenanceUtil {
 
   private HashMap<Part, Integer> partsYears;
   private LocalDate date;
@@ -15,7 +15,7 @@ public class PartsInventory {
     this.date = date;
   }
 
-  public Part getCriticalMaintenancePart() {
+  public Part getImmedateMaintenancePart() {
     if (partsYears.size() == 0) {
       return null;
     }
@@ -29,6 +29,46 @@ public class PartsInventory {
       }
     }
     return immediatePart;
+  }
+
+  public String getStatus() {
+    List<String> status = new ArrayList<>();
+    for (Part part : partsYears.keySet()) {
+      status.add(checkPartHealth(part, date));
+    }
+    if (status.contains("critical")) {
+      return "critical";
+    } else if (status.contains("warning")) {
+      return "warning";
+    } else {
+      return "healthy";
+    }
+  }
+
+  public List<Part> getCritical() {
+    List<Part> criticalParts = new ArrayList<>();
+    for (Part part : partsYears.keySet()) {
+      if (checkPartHealth(part, date).equalsIgnoreCase("critical")) {
+        criticalParts.add(part);
+      }
+    }
+    return criticalParts;
+  }
+
+  public List<Part> getWarning() {
+    List<Part> warningParts = new ArrayList<>();
+    for (Part part : partsYears.keySet()) {
+      if (checkPartHealth(part, date).equalsIgnoreCase("warning")) {
+        warningParts.add(part);
+      }
+    }
+    return warningParts;
+  }
+
+  public List<Part> getParts() {
+    List<Part> parts = new ArrayList<>();
+    parts.addAll(partsYears.keySet());
+    return parts;
   }
 
   public int getYearsLeft(Part part) {

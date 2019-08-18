@@ -8,7 +8,7 @@ public class MaintenanceUtil {
     int remainingYears = getPartYearsLeft(part, date);
     if (remainingYears <= 0) {
       return "critical";
-    } else if (remainingYears < part.getBuffer()) {
+    } else if (remainingYears <= part.getBuffer()) {
       return "warning";
     } else {
       return "healthy";
@@ -19,5 +19,10 @@ public class MaintenanceUtil {
     int ageYears = date.getYear() - part.getStartDate().getYear();
     int remainingYears = part.getLifespan() - ageYears;
     return remainingYears;
+  }
+
+  public void performPartMaintenance(Part part, LocalDate date) {
+    System.out.println("Tuning up " + part.getName());
+    part.setStartDate(date);
   }
 }

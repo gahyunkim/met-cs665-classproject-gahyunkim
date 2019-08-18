@@ -33,7 +33,7 @@ public class PartsInventoryTest {
   public void singlePartInventory() {
     inventory.add(radar);
     assertEquals(1, inventory.getSize());
-    assertEquals(radar, inventory.getCriticalMaintenancePart());
+    assertEquals(radar, inventory.getImmedateMaintenancePart());
     assertEquals(8, inventory.getYearsLeft(radar));
   }
 
@@ -42,7 +42,7 @@ public class PartsInventoryTest {
     inventory.add(radar);
     inventory.add(engine);
     assertEquals(2, inventory.getSize());
-    assertEquals(engine, inventory.getCriticalMaintenancePart());
+    assertEquals(engine, inventory.getImmedateMaintenancePart());
     assertEquals(3, inventory.getYearsLeft(engine));
   }
 }

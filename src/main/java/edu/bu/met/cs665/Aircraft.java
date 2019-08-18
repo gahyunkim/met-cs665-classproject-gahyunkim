@@ -1,8 +1,13 @@
 package edu.bu.met.cs665;
 
 import edu.bu.met.cs665.parts.Engine;
+import edu.bu.met.cs665.parts.Part;
 import edu.bu.met.cs665.parts.PartsInventory;
 import edu.bu.met.cs665.parts.Radar;
+import edu.bu.met.cs665.states.AircraftState;
+import edu.bu.met.cs665.states.CriticalAircraftState;
+import edu.bu.met.cs665.states.HealthyAircraftState;
+import edu.bu.met.cs665.states.WarningAircraftState;
 import java.time.LocalDate;
 
 public class Aircraft {
@@ -86,6 +91,8 @@ public class Aircraft {
       aircraft.setEngineThrust(engineThrust);
       aircraft.setWeight(weight);
 
+      aircraft.evaluate();
+
       return aircraft;
     }
   }
@@ -103,8 +110,34 @@ public class Aircraft {
   private int engineThrust;
   private int weight;
 
+  HealthyAircraftState healthyAircraftState;
+  WarningAircraftState warningAircraftState;
+  CriticalAircraftState criticalAircraftState;
+
+  AircraftState state;
+
   private Aircraft() {
     inventory = new PartsInventory(date);
+    healthyAircraftState = new HealthyAircraftState(this);
+    warningAircraftState = new WarningAircraftState(this);
+    criticalAircraftState = new CriticalAircraftState(this);
+    state = healthyAircraftState;
+  }
+
+  public void evaluate() {
+    state.evaluate();
+  }
+
+  public void printResults() {
+    state.printResults();
+  }
+
+  public void performMaintenance() {
+    state.performMaintenance();
+  }
+
+  public String getStatus() {
+    return state.get();
   }
 
   public void setDate(LocalDate date) {
@@ -134,10 +167,17 @@ public class Aircraft {
 
   public void setRadar(Radar radar) {
     inventory.add(radar);
+    state.evaluate();
   }
 
   public void setEngine(Engine engine) {
     inventory.add(engine);
+    state.evaluate();
+  }
+
+  public void addPart(Part part) {
+    inventory.add(part);
+    state.evaluate();
   }
 
   public void setEngineThrust(int engineThrust) {
@@ -178,6 +218,26 @@ public class Aircraft {
 
   public int getRange() {
     return range;
+  }
+
+  public void setState(AircraftState state) {
+    this.state = state;
+  }
+
+  public AircraftState getState() {
+    return state;
+  }
+
+  public HealthyAircraftState getHealthyAircraftState() {
+    return healthyAircraftState;
+  }
+
+  public WarningAircraftState getWarningAircraftState() {
+    return warningAircraftState;
+  }
+
+  public CriticalAircraftState getCriticalAircraftState() {
+    return criticalAircraftState;
   }
 
   public PartsInventory getInventory() {

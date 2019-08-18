@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import org.junit.Test;
 
-public class AircraftTest {
+public class BuildAircraftTest {
 
   @Test
   public void buildAircraft() {
@@ -56,5 +56,5 @@ public class AircraftTest {
     assertEquals(engineThrust, F22.getEngineThrust());
     assertEquals(weight, F22.getWeight());
   }
-  
+
 }
