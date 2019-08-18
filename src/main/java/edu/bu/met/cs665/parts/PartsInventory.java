@@ -15,7 +15,7 @@ public class PartsInventory {
     this.date = date;
   }
 
-  public Part getPartNeedingMaintenance() {
+  public Part getCriticalMaintenancePart() {
     if (partsYears.size() == 0) {
       return null;
     }
@@ -24,11 +24,15 @@ public class PartsInventory {
 
     Part immediatePart = parts.get(0);
     for (Part part : parts) {
-      if (partsYears.get(part) < partsYears.get(part)) {
+      if (partsYears.get(part) < partsYears.get(immediatePart)) {
         immediatePart = part;
       }
     }
     return immediatePart;
+  }
+
+  public int getYearsLeft(Part part) {
+    return partsYears.get(part);
   }
 
   public int getSize() {

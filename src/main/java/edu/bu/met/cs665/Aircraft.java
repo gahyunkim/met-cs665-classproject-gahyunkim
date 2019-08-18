@@ -1,13 +1,9 @@
 package edu.bu.met.cs665;
 
 import edu.bu.met.cs665.parts.Engine;
-import edu.bu.met.cs665.parts.Part;
 import edu.bu.met.cs665.parts.PartsInventory;
 import edu.bu.met.cs665.parts.Radar;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.tools.ant.taskdefs.Local;
 
 public class Aircraft {
 
@@ -113,6 +109,7 @@ public class Aircraft {
 
   public void setDate(LocalDate date) {
     this.date = date;
+    inventory.setDate(date);
   }
 
   public LocalDate getDate() {
@@ -142,10 +139,6 @@ public class Aircraft {
   public void setEngine(Engine engine) {
     inventory.add(engine);
   }
-
-//  public List<Part> getPartsList() {
-//    return inventory;
-//  }
 
   public void setEngineThrust(int engineThrust) {
     this.engineThrust = engineThrust;

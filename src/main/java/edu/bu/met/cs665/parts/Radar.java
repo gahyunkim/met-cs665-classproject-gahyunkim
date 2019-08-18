@@ -50,7 +50,7 @@ public class Radar extends MaintenanceUtil implements Part {
     return checkPartHealth(this, date);
   }
 
-  public int getYearsLeft(LocalDate date) {
-    return getPartYearsLeft(this, date);
+  public int getYearsLeft(LocalDate currentDate) {
+    return getPartYearsLeft(this, currentDate);
   }
 }

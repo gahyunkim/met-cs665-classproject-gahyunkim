@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 public interface AircraftState {
 
-  void getStatus();
+  void evaluate();
+
+  void printResults();
 
   void performMaintenance();
 
