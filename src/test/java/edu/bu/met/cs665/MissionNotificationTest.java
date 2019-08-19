@@ -12,7 +12,7 @@ public class MissionNotificationTest extends SampleAircraft {
 
   NavalAviator jonathan = new NavalAviator("Captain Ahn");
   AirForcePilot susie = new AirForcePilot("Lieutenant Kim");
-  Aircraft F22 = buildSampleAircraft();
+  Aircraft F22 = buildF22();
 
   @Before
   public void setUp() throws Exception {

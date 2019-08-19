@@ -27,7 +27,6 @@ public class WarningAircraftState extends MaintenanceUtil implements AircraftSta
       aircraft.evaluate();
       return;
     } else {
-      System.out.println("Performing inspection ...\n");
       return;
     }
   }

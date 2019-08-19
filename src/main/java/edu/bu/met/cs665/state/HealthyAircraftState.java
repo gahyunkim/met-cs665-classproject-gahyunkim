@@ -27,7 +27,6 @@ public class HealthyAircraftState extends MaintenanceUtil implements AircraftSta
       aircraft.evaluate();
       return;
     } else {
-      System.out.println("Performing basic assessment...\n");
       Part part = inventory.getImmedateMaintenancePart();
       partName = part.getName();
       yearsLeft = inventory.getYearsLeft(part);

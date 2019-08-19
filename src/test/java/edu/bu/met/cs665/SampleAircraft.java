@@ -19,7 +19,7 @@ public class SampleAircraft {
   int engineThrust = 35000;
   int weight = 38000;
 
-  public Aircraft buildSampleAircraft() {
+  public Aircraft buildF22() {
     radar.setLifespan(10);
     radar.setStartDate(LocalDate.of(2000, Month.APRIL, 1));
 

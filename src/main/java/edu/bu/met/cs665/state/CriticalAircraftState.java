@@ -27,7 +27,6 @@ public class CriticalAircraftState extends MaintenanceUtil implements AircraftSt
       aircraft.evaluate();
       return;
     } else {
-      System.out.println("Performing immediate assessment ...");
       return;
     }
   }

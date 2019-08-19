@@ -101,4 +101,14 @@ public class PartsInventory extends MaintenanceUtil {
     parts.addAll(partsYears.keySet());
     return parts.contains(part);
   }
+
+  public void print() {
+    System.out.println("\n------------------------------------------------");
+    System.out.println("Parts Inventory");
+    for (Part part: partsYears.keySet()) {
+      System.out.println("\t" + part.getName() + ": ");
+      System.out.println("\t\t" + partsYears.get(part) + " years left until required maintenance");
+    }
+    System.out.println("------------------------------------------------\n");
+  }
 }

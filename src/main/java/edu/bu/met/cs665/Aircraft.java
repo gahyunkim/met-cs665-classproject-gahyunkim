@@ -294,4 +294,32 @@ public class Aircraft {
   public PartsInventory getInventory() {
     return inventory;
   }
+
+  public void printSpecs() {
+    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    System.out.println("| Aircraft Model: " + modelName);
+    System.out.println("| ID: " + id);
+
+    printParts();
+
+    System.out.println("| Refueling Rate: " + refuelingRate + " lb/min");
+    System.out.println("| Speed: " + speed + " km/h");
+    System.out.println("| Range: " + range + " km");
+    System.out.println("| Engine Thrust: " + engineThrust + " lb");
+    System.out.println("| Weight: " + weight + " lb");
+    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  }
+
+  public void printParts() {
+    System.out.println("| PARTS: ");
+    for (Part part: inventory.getParts()) {
+      System.out.println("|    " + part.getName());
+    }
+  }
+
+  public void printStatus() {
+    System.out.println("**********************************");
+    System.out.println("* " + modelName + " id: #" + id + " - STATUS: " + getStatus().toUpperCase());
+    System.out.println("**********************************");
+  }
 }
