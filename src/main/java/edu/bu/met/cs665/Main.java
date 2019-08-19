@@ -12,18 +12,18 @@ public class Main {
 
   public static void main(String[] args) {
 
-    long id = 1L;
-    String modelName = "F-22";
-    LocalDate currentDate = LocalDate.of(2010, Month.APRIL, 1);
+    final long id = 1L;
+    final String modelName = "F-22";
+    final LocalDate currentDate = LocalDate.of(2010, Month.APRIL, 1);
 
     Radar radar = new Radar("electronic span");
     Engine engine = new Engine("gas turbine");
 
-    int refuelingRate = 1000;
-    int speed = 2410;
-    int range = 1600;
-    int engineThrust = 35000;
-    int weight = 38000;
+    final int refuelingRate = 1000;
+    final int speed = 2410;
+    final int range = 1600;
+    final int engineThrust = 35000;
+    final int weight = 38000;
 
     radar.setLifespan(10);
     radar.setStartDate(LocalDate.of(2000, Month.APRIL, 1));
@@ -31,7 +31,7 @@ public class Main {
     engine.setLifespan(15);
     engine.setStartDate(LocalDate.of(2000, Month.APRIL, 1));
 
-    Aircraft F22 = new Aircraft.Builder(id)
+    Aircraft raptor = new Aircraft.Builder(id)
         .withModelName(modelName)
         .withDate(currentDate)
         .withRadar(radar)
@@ -43,26 +43,26 @@ public class Main {
         .withWeight(weight)
         .build();
 
-    F22.printSpecs();
-    F22.getInventory().print();
+    raptor.printSpecs();
+    raptor.getInventory().print();
 
-    F22.printStatus();
-    F22.performMaintenance();
-    F22.printStatus();
+    raptor.printStatus();
+    raptor.performMaintenance();
+    raptor.printStatus();
 
 
 
-    F22.refuel();
-    F22.setRefuelMethod(new Boom());
-    F22.refuel();
+    raptor.refuel();
+    raptor.setRefuelMethod(new Boom());
+    raptor.refuel();
 
 
     NavalAviator george = new NavalAviator("Lieutenant Young");
     AirForcePilot mike = new AirForcePilot("Captain Byon");
-    F22.addPilot(george);
-    F22.addPilot(mike);
+    raptor.addPilot(george);
+    raptor.addPilot(mike);
 
-    F22.setMission(new Mission("fighter"));
-    F22.notifyPilots();
+    raptor.setMission(new Mission("fighter"));
+    raptor.notifyPilots();
   }
 }
