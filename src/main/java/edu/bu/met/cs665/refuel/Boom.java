@@ -4,7 +4,6 @@ import edu.bu.met.cs665.Aircraft;
 import edu.bu.met.cs665.RefuelMethod;
 
 public class Boom implements RefuelMethod {
-  private Aircraft aircraft;
 
   public void refuel(Aircraft aircraft) {
     System.out.println("Operator navigating boom");

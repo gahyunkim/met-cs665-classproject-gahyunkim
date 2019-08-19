@@ -4,7 +4,6 @@ import edu.bu.met.cs665.Aircraft;
 import edu.bu.met.cs665.RefuelMethod;
 
 public class Drogue implements RefuelMethod {
-  private Aircraft aircraft;
 
   public void refuel(Aircraft aircraft) {
     System.out.println("Operator extending drogue basket");
