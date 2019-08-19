@@ -17,7 +17,7 @@ public class Mission {
   }
 
   public String getDescription() {
-    switch(missionType) {
+    switch (missionType) {
       case "attack":
         return getAttackDescription();
       case "cargo":

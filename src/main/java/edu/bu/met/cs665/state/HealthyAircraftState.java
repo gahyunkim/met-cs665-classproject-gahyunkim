@@ -2,8 +2,8 @@ package edu.bu.met.cs665.state;
 
 import edu.bu.met.cs665.Aircraft;
 import edu.bu.met.cs665.AircraftState;
-import edu.bu.met.cs665.parts.MaintenanceUtil;
 import edu.bu.met.cs665.Part;
+import edu.bu.met.cs665.parts.MaintenanceUtil;
 import edu.bu.met.cs665.parts.PartsInventory;
 import java.util.List;
 

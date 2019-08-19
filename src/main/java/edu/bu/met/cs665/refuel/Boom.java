@@ -11,8 +11,8 @@ public class Boom implements RefuelMethod {
     System.out.println("Boom latched in position");
     System.out.println("Extending boom");
 
-    System.out.println("Refueling at: " + aircraft.getRefuelingRate() +
-        "pounds per minute");
+    System.out.println("Refueling at: " + aircraft.getRefuelingRate()
+        + "pounds per minute");
 
     System.out.println("Refuel complete!");
   }
