@@ -5,7 +5,6 @@ import edu.bu.met.cs665.parts.Radar;
 import edu.bu.met.cs665.pilot.AirForcePilot;
 import edu.bu.met.cs665.pilot.NavalAviator;
 import edu.bu.met.cs665.refuel.Boom;
-import edu.bu.met.cs665.refuel.Drogue;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -53,11 +52,9 @@ public class Main {
 
 
 
-
     F22.refuel();
     F22.setRefuelMethod(new Boom());
     F22.refuel();
-
 
 
     NavalAviator george = new NavalAviator("Lieutenant Young");

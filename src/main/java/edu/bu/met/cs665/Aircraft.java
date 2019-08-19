@@ -136,7 +136,7 @@ public class Aircraft {
   public void setMission(Mission mission) {
     System.out.println("\n////////////////////////////////////");
     System.out.println("* Tasked " + modelName + " with "
-        + mission.getType().toUpperCase() + " mission *");
+        + mission.getType() + " mission *");
     System.out.println("////////////////////////////////////\n");
     this.mission = mission;
   }
@@ -326,7 +326,8 @@ public class Aircraft {
 
   public void printStatus() {
     System.out.println("**********************************");
-    System.out.println("* " + modelName + " id: #" + id + " - STATUS: " + getStatus().toUpperCase());
+    System.out.println("* " + modelName + " id: #" + id + " - STATUS: "
+        + getStatus());
     System.out.println("**********************************\n");
   }
 }

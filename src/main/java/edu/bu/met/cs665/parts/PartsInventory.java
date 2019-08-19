@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PartsInventory extends MaintenanceUtil {
 
@@ -105,10 +106,10 @@ public class PartsInventory extends MaintenanceUtil {
   public void print() {
     System.out.println("\n------------------------------------------------");
     System.out.println("| Parts Inventory");
-    for (Part part: partsYears.keySet()) {
+    partsYears.forEach((part, years) -> {
       System.out.println("|\t" + part.getName() + ": ");
-      System.out.println("|\t\t" + partsYears.get(part) + " years left until required maintenance");
-    }
+      System.out.println("|\t\t" + years + " years left until required maintenance");
+    });
     System.out.println("------------------------------------------------\n");
   }
 }
