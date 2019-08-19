@@ -1,14 +1,16 @@
 package edu.bu.met.cs665;
 
 import edu.bu.met.cs665.parts.Engine;
-import edu.bu.met.cs665.parts.Part;
 import edu.bu.met.cs665.parts.PartsInventory;
 import edu.bu.met.cs665.parts.Radar;
-import edu.bu.met.cs665.states.AircraftState;
-import edu.bu.met.cs665.states.CriticalAircraftState;
-import edu.bu.met.cs665.states.HealthyAircraftState;
-import edu.bu.met.cs665.states.WarningAircraftState;
+import edu.bu.met.cs665.refuel.Drogue;
+import edu.bu.met.cs665.state.CriticalAircraftState;
+import edu.bu.met.cs665.state.HealthyAircraftState;
+import edu.bu.met.cs665.state.WarningAircraftState;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Aircraft {
 
@@ -104,7 +106,9 @@ public class Aircraft {
 
   private PartsInventory inventory;
 
+  private RefuelMethod refuelMethod;
   private int refuelingRate;
+
   private int speed;
   private int range;
   private int engineThrust;
@@ -116,12 +120,59 @@ public class Aircraft {
 
   AircraftState state;
 
+  Mission mission;
+  List<Pilot> pilotList;
+
   private Aircraft() {
     inventory = new PartsInventory(date);
     healthyAircraftState = new HealthyAircraftState(this);
     warningAircraftState = new WarningAircraftState(this);
     criticalAircraftState = new CriticalAircraftState(this);
     state = healthyAircraftState;
+    pilotList = new ArrayList<>();
+    refuelMethod = new Drogue();
+  }
+
+  public void setMission(Mission mission) {
+    this.mission = mission;
+  }
+
+  public Mission getMission() {
+    return mission;
+  }
+
+  public void notifyPilots() {
+    if (mission == null) {
+      System.out.println("Currently no tasked mission");
+    }
+    Collections.shuffle(pilotList);
+    for (Pilot pilot : pilotList) {
+      pilot.update(mission);
+    }
+  }
+
+  public void addPilot(Pilot pilot) {
+    pilotList.add(pilot);
+  }
+
+  public void removePilot(Pilot pilot) {
+    pilotList.remove(pilot);
+  }
+
+  public List<Pilot> getPilots() {
+    return pilotList;
+  }
+
+  public void refuel() {
+    refuelMethod.refuel(this);
+  }
+
+  public void setRefuelMethod(RefuelMethod method) {
+    this.refuelMethod = method;
+  }
+
+  public RefuelMethod getRefuelMethod() {
+    return refuelMethod;
   }
 
   public void evaluate() {

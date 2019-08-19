@@ -1,5 +1,6 @@
 package edu.bu.met.cs665.parts;
 
+import edu.bu.met.cs665.Part;
 import java.time.LocalDate;
 
 public class Radar extends MaintenanceUtil implements Part {

@@ -1,4 +1,4 @@
-package edu.bu.met.cs665.parts;
+package edu.bu.met.cs665;
 
 import java.time.LocalDate;
 

@@ -1,9 +1,9 @@
 package edu.bu.met.cs665;
 
 import edu.bu.met.cs665.parts.PartsInventoryTest;
-import edu.bu.met.cs665.states.CriticalAircraftStateTest;
-import edu.bu.met.cs665.states.HealthyAircraftStateTest;
-import edu.bu.met.cs665.states.WarningAircraftStateTest;
+import edu.bu.met.cs665.state.CriticalAircraftStateTest;
+import edu.bu.met.cs665.state.HealthyAircraftStateTest;
+import edu.bu.met.cs665.state.WarningAircraftStateTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -15,7 +15,9 @@ import org.junit.runners.Suite.SuiteClasses;
     PartsInventoryTest.class,
     HealthyAircraftStateTest.class,
     WarningAircraftStateTest.class,
-    CriticalAircraftStateTest.class
+    CriticalAircraftStateTest.class,
+    MissionNotificationTest.class,
+    MissionTest.class
 })
 public class AllTests {
 

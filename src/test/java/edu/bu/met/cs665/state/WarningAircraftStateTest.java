@@ -1,4 +1,4 @@
-package edu.bu.met.cs665.states;
+package edu.bu.met.cs665.state;
 
 import static org.junit.Assert.*;
 

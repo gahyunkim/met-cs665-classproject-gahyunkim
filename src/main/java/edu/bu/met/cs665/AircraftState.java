@@ -1,6 +1,4 @@
-package edu.bu.met.cs665.states;
-
-import java.time.LocalDate;
+package edu.bu.met.cs665;
 
 public interface AircraftState {
 

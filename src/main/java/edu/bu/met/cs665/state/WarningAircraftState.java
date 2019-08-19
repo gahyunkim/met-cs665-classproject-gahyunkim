@@ -1,41 +1,42 @@
-package edu.bu.met.cs665.states;
+package edu.bu.met.cs665.state;
 
 import edu.bu.met.cs665.Aircraft;
+import edu.bu.met.cs665.AircraftState;
 import edu.bu.met.cs665.parts.MaintenanceUtil;
-import edu.bu.met.cs665.parts.Part;
+import edu.bu.met.cs665.Part;
 import edu.bu.met.cs665.parts.PartsInventory;
 import java.util.List;
 
-public class CriticalAircraftState extends MaintenanceUtil implements AircraftState {
+public class WarningAircraftState extends MaintenanceUtil implements AircraftState {
   private Aircraft aircraft;
   private PartsInventory inventory;
 
-  public CriticalAircraftState(Aircraft aircraft) {
+  public WarningAircraftState(Aircraft aircraft) {
     this.aircraft = aircraft;
     this.inventory = aircraft.getInventory();
   }
 
   public void evaluate() {
     PartsInventory inventory = aircraft.getInventory();
-    if (inventory.getStatus().equalsIgnoreCase("healthy")) {
+    if (inventory.getStatus().equalsIgnoreCase("critical")) {
+      aircraft.setState(aircraft.getCriticalAircraftState());
+      aircraft.evaluate();
+      return;
+    } else if (inventory.getStatus().equalsIgnoreCase("healthy")) {
       aircraft.setState(aircraft.getHealthyAircraftState());
       aircraft.evaluate();
       return;
-    } else if (inventory.getStatus().equalsIgnoreCase("warning")) {
-      aircraft.setState(aircraft.getWarningAircraftState());
-      aircraft.evaluate();
-      return;
     } else {
-      System.out.println("Performing immediate assessment ...");
+      System.out.println("Performing inspection ...\n");
       return;
     }
   }
 
   public void printResults() {
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    System.out.println("CRITICAL - Please perform maintenance for following:");
+    System.out.println("WARNING - Please schedule maintenance for following:");
 
-    for (Part part: inventory.getCritical()) {
+    for (Part part: inventory.getWarning()) {
       printMaintenance(part);
     }
 
@@ -53,10 +54,10 @@ public class CriticalAircraftState extends MaintenanceUtil implements AircraftSt
       performPartMaintenance(part, aircraft.getDate());
     }
     aircraft.setState(aircraft.getHealthyAircraftState());
-    System.out.println("\nMaintenance complete!\n");
+    System.out.println("\nMaintenance Complete!\n");
   }
 
   public String get() {
-    return "critical";
+    return "warning";
   }
 }

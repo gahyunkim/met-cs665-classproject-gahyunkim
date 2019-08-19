@@ -2,6 +2,7 @@ package edu.bu.met.cs665.parts;
 
 import static org.junit.Assert.*;
 
+import edu.bu.met.cs665.Part;
 import java.time.LocalDate;
 import java.time.Month;
 import org.junit.Before;

@@ -1,5 +1,6 @@
 package edu.bu.met.cs665.parts;
 
+import edu.bu.met.cs665.Part;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;

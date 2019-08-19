@@ -1,4 +1,4 @@
-package edu.bu.met.cs665.states;
+package edu.bu.met.cs665.state;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +10,7 @@ import java.time.Month;
 import org.junit.Before;
 import org.junit.Test;
 
-public class HealthyAircraftStateTest {
+public class CriticalAircraftStateTest {
 
   Aircraft F22;
   LocalDate currentDate = LocalDate.of(2010, Month.JANUARY, 1);
@@ -30,8 +30,8 @@ public class HealthyAircraftStateTest {
   @Before
   public void setUp() {
     radar = new Radar("electronic span");
-    radar.setStartDate(LocalDate.of(2002, Month.JANUARY, 1));
-    radar.setLifespan(20);
+    radar.setStartDate(LocalDate.of(2000, Month.JANUARY, 1));
+    radar.setLifespan(10);
 
     engine = new Engine("gas turbine");
     engine.setStartDate(LocalDate.of(2000, Month.JANUARY, 1));
@@ -51,14 +51,20 @@ public class HealthyAircraftStateTest {
   }
 
   @Test
-  public void getHealthyState() {
-    assertEquals("healthy", F22.getStatus());
+  public void getWarningState() {
+    assertEquals("critical", F22.getStatus());
   }
 
   @Test
   public void getStateAfterMaintenance() {
-    F22.evaluate();
     F22.performMaintenance();
     assertEquals("healthy", F22.getStatus());
+  }
+
+  @Test
+  public void getCriticalAfterPartModification() {
+    radar.setLifespan(11);
+    F22.setRadar(radar);
+    assertEquals("warning", F22.getStatus());
   }
 }
