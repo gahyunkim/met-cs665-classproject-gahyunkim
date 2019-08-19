@@ -164,6 +164,7 @@ public class Aircraft {
   }
 
   public void refuel() {
+    System.out.println("\nStarting " + refuelMethod.getName() + " refueling process:");
     refuelMethod.refuel(this);
   }
 
@@ -184,6 +185,7 @@ public class Aircraft {
   }
 
   public void performMaintenance() {
+    System.out.println("Starting maintenance");
     state.performMaintenance();
   }
 
@@ -320,6 +322,6 @@ public class Aircraft {
   public void printStatus() {
     System.out.println("**********************************");
     System.out.println("* " + modelName + " id: #" + id + " - STATUS: " + getStatus().toUpperCase());
-    System.out.println("**********************************");
+    System.out.println("**********************************\n");
   }
 }

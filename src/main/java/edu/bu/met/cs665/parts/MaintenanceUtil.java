@@ -23,7 +23,7 @@ public class MaintenanceUtil {
   }
 
   public void performPartMaintenance(Part part, LocalDate date) {
-    System.out.println("Tuning up " + part.getName());
+    System.out.println("- Tuning up " + part.getName() + " . . .");
     part.setStartDate(date);
   }
 }

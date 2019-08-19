@@ -104,10 +104,10 @@ public class PartsInventory extends MaintenanceUtil {
 
   public void print() {
     System.out.println("\n------------------------------------------------");
-    System.out.println("Parts Inventory");
+    System.out.println("| Parts Inventory");
     for (Part part: partsYears.keySet()) {
-      System.out.println("\t" + part.getName() + ": ");
-      System.out.println("\t\t" + partsYears.get(part) + " years left until required maintenance");
+      System.out.println("|\t" + part.getName() + ": ");
+      System.out.println("|\t\t" + partsYears.get(part) + " years left until required maintenance");
     }
     System.out.println("------------------------------------------------\n");
   }
