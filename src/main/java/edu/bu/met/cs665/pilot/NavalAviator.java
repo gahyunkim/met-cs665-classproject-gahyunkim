@@ -13,8 +13,8 @@ public class NavalAviator implements Pilot {
   }
 
   public void update(Mission mission) {
-    System.out.println("Naval Aviator " + name + "received " + mission.getType() + " mission");
-    System.out.println("Objective: " + mission.getDescription());
+    System.out.println("\t> Naval Aviator " + name + " received " + mission.getType() + " mission.");
+    System.out.println("\t\t\tObjective: " + mission.getDescription());
     setMission(mission);
   }
 

@@ -134,6 +134,10 @@ public class Aircraft {
   }
 
   public void setMission(Mission mission) {
+    System.out.println("\n////////////////////////////////////");
+    System.out.println("* Tasked " + modelName + " with "
+        + mission.getType().toUpperCase() + " mission *");
+    System.out.println("////////////////////////////////////\n");
     this.mission = mission;
   }
 
@@ -145,6 +149,7 @@ public class Aircraft {
     if (mission == null) {
       System.out.println("Currently no tasked mission");
     }
+    System.out.println("COMM squadron notifying pilots . . .");
     Collections.shuffle(pilotList);
     for (Pilot pilot : pilotList) {
       pilot.update(mission);

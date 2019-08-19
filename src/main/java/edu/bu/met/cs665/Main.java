@@ -2,6 +2,8 @@ package edu.bu.met.cs665;
 
 import edu.bu.met.cs665.parts.Engine;
 import edu.bu.met.cs665.parts.Radar;
+import edu.bu.met.cs665.pilot.AirForcePilot;
+import edu.bu.met.cs665.pilot.NavalAviator;
 import edu.bu.met.cs665.refuel.Boom;
 import edu.bu.met.cs665.refuel.Drogue;
 import java.time.LocalDate;
@@ -49,8 +51,21 @@ public class Main {
     F22.performMaintenance();
     F22.printStatus();
 
+
+
+
     F22.refuel();
     F22.setRefuelMethod(new Boom());
     F22.refuel();
+
+
+
+    NavalAviator george = new NavalAviator("Lieutenant Young");
+    AirForcePilot mike = new AirForcePilot("Captain Byon");
+    F22.addPilot(george);
+    F22.addPilot(mike);
+
+    F22.setMission(new Mission("fighter"));
+    F22.notifyPilots();
   }
 }

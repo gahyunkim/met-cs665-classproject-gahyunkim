@@ -13,8 +13,8 @@ public class AirForcePilot implements Pilot {
   }
 
   public void update(Mission mission) {
-    System.out.println("Air Force Pilot " + name + "received " + mission.getType() + " mission");
-    System.out.println("Objective: " + mission.getDescription());
+    System.out.println("\t> Air Force Pilot " + name + " received " + mission.getType() + " mission.");
+    System.out.println("\t\t\tObjective: " + mission.getDescription());
     setMission(mission);
   }
 
