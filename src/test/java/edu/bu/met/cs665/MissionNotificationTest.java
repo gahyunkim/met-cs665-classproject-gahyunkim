@@ -15,7 +15,7 @@ public class MissionNotificationTest extends SampleAircraft {
   Aircraft F22 = buildF22();
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     F22.addPilot(jonathan);
     F22.addPilot(susie);
   }
