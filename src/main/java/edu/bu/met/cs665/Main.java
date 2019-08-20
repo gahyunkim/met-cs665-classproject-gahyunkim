@@ -61,7 +61,11 @@ public class Main {
     raptor.addPilot(george);
     raptor.addPilot(mike);
 
-    raptor.setMission(new Mission("fighter"));
+    Mission fighterMission = new Mission("observation");
+    fighterMission.setTakeoffBase("Logan International Airport");
+    fighterMission.setLandingBase("Hartsfield-Jackson Atlanta International Airport");
+
+    raptor.setMission(fighterMission);
     raptor.notifyPilots();
   }
 }

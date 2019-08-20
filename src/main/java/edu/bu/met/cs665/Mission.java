@@ -10,6 +10,8 @@ public class Mission {
 
   private MissionType type;
   private String typeName;
+  private String takeoffBase;
+  private String landingBase;
 
   public Mission(String typeName) {
     this.typeName = typeName;
@@ -31,6 +33,22 @@ public class Mission {
     }
   }
 
+  public void setTakeoffBase(String baseIcao) {
+    this.takeoffBase = baseIcao;
+  }
+
+  public String getTakeoffBase() {
+    return takeoffBase;
+  }
+
+  public void setLandingBase(String baseIcao) {
+    this.landingBase = baseIcao;
+  }
+
+  public String getLandingBase() {
+    return landingBase;
+  }
+
   public MissionType getType() {
     return type;
   }
@@ -44,6 +62,10 @@ public class Mission {
   }
 
   public String getDescription() {
-    return type.getDescription();
+    String missionDescription = type.getDescription();
+    return type.getDescription()
+        + "\n\t\t\t\tTakeoff Base: " + takeoffBase
+        + "\n\t\t\t\tLanding Base: " + landingBase;
+
   }
 }

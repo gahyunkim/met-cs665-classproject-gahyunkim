@@ -136,7 +136,7 @@ public class Aircraft {
   public void setMission(Mission mission) {
     System.out.println("\n////////////////////////////////////");
     System.out.println("* Tasked " + modelName + " with "
-        + mission.getType() + " mission *");
+        + mission.getTypeName() + " mission *");
     System.out.println("////////////////////////////////////\n");
     this.mission = mission;
   }
