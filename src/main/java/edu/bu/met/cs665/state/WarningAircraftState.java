@@ -35,7 +35,7 @@ public class WarningAircraftState extends MaintenanceUtil implements AircraftSta
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     System.out.println("WARNING - Please schedule maintenance for following:");
 
-    for (Part part: inventory.getWarning()) {
+    for (Part part: inventory.getWarningParts()) {
       printMaintenance(part);
     }
 

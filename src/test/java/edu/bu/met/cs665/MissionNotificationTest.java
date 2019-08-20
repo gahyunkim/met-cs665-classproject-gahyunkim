@@ -25,7 +25,9 @@ public class MissionNotificationTest extends SampleAircraft {
     assertEquals(null, jonathan.getMission());
     assertEquals(null, susie.getMission());
 
-    Mission mission = new Mission("Fighter");
+    Mission mission = new Mission("fighter");
+    mission.setTakeoffBase("Hartsfield International Airport");
+    mission.setLandingBase("Logan International Airport");
     F22.setMission(mission);
     F22.notifyPilots();
 

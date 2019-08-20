@@ -46,7 +46,7 @@ public class PartsInventory extends MaintenanceUtil {
     }
   }
 
-  public List<Part> getCritical() {
+  public List<Part> getCriticalParts() {
     List<Part> criticalParts = new ArrayList<>();
     for (Part part : partsYears.keySet()) {
       if (checkPartHealth(part, date).equalsIgnoreCase("critical")) {
@@ -56,7 +56,7 @@ public class PartsInventory extends MaintenanceUtil {
     return criticalParts;
   }
 
-  public List<Part> getWarning() {
+  public List<Part> getWarningParts() {
     List<Part> warningParts = new ArrayList<>();
     for (Part part : partsYears.keySet()) {
       if (checkPartHealth(part, date).equalsIgnoreCase("warning")) {

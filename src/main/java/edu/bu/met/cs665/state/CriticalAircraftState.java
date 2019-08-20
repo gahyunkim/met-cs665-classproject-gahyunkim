@@ -35,7 +35,7 @@ public class CriticalAircraftState extends MaintenanceUtil implements AircraftSt
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     System.out.println("CRITICAL - Please perform maintenance for following:");
 
-    for (Part part: inventory.getCritical()) {
+    for (Part part: inventory.getCriticalParts()) {
       printMaintenance(part);
     }
 
