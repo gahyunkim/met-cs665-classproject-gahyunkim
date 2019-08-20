@@ -17,7 +17,7 @@ public class PartsInventoryTest {
   LocalDate date;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     engine = new Engine("Pratt & Whitney");
     engine.setLifespan(5);
     engine.setStartDate(LocalDate.of(2000, Month.APRIL, 1));
