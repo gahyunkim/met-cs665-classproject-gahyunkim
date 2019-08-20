@@ -62,7 +62,6 @@ public class Mission {
   }
 
   public String getDescription() {
-    String missionDescription = type.getDescription();
     return type.getDescription()
         + "\n\t\t\t\tTakeoff Base: " + takeoffBase
         + "\n\t\t\t\tLanding Base: " + landingBase;
