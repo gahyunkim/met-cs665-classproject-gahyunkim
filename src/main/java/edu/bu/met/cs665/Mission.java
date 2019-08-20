@@ -1,49 +1,49 @@
 package edu.bu.met.cs665;
 
+import edu.bu.met.cs665.mission.AttackMission;
+import edu.bu.met.cs665.mission.CargoMission;
+import edu.bu.met.cs665.mission.FighterMission;
+import edu.bu.met.cs665.mission.MissionType;
+import edu.bu.met.cs665.mission.ObservationMission;
+
 public class Mission {
 
-  private String missionType;
+  private MissionType type;
+  private String typeName;
 
-  public Mission(String type) {
-    missionType = type;
-  }
-
-  public String getType() {
-    return missionType;
-  }
-
-  public void setType(String type) {
-    this.missionType = type;
-  }
-
-  public String getDescription() {
-    switch (missionType) {
+  public Mission(String typeName) {
+    this.typeName = typeName;
+    switch (typeName) {
       case "attack":
-        return getAttackDescription();
+        type = new AttackMission();
+        return;
       case "cargo":
-        return getCargoDescription();
+        type = new CargoMission();
+        return;
       case "fighter":
-        return getFighterDescription();
+        type = new FighterMission();
+        return;
       case "observation":
-        return getObservationDescription();
+        type = new ObservationMission();
+        return;
       default:
-        return missionType;
+        return;
     }
   }
 
-  private String getAttackDescription() {
-    return "Search out, attack, and destroy enemy targets";
+  public MissionType getType() {
+    return type;
   }
 
-  private String getCargoDescription() {
-    return "Carry cargo, passengers, and medical patients";
+  public void setType(MissionType type) {
+    this.type = type;
   }
 
-  private String getFighterDescription() {
-    return "Intercept and destroy other aircraft and missiles";
+  public String getTypeName() {
+    return typeName;
   }
 
-  private String getObservationDescription() {
-    return "Observe and report tactical information of enemy forces";
+  public String getDescription() {
+    return type.getDescription();
   }
 }

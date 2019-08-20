@@ -51,7 +51,6 @@ public class Main {
     raptor.printStatus();
 
 
-
     raptor.refuel();
     raptor.setRefuelMethod(new Boom());
     raptor.refuel();
