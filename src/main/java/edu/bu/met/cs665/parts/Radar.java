@@ -5,11 +5,14 @@ import java.time.LocalDate;
 
 public class Radar extends MaintenanceUtil implements Part {
 
-  private int lifespanYears;
-  private LocalDate startDate;
-
-  private int buffer = 2;
   private String name;
+
+  // Date which part's use was installed and initiated
+  private LocalDate startDate;
+  // Number of years part is expected to last until required maintenance
+  private int lifespanYears;
+  // Number of years until required maintenance that warning message will be triggered
+  private int buffer = 2;
 
   public Radar(String name) {
     this.name = name;
@@ -47,10 +50,12 @@ public class Radar extends MaintenanceUtil implements Part {
     return name;
   }
 
+  // Given current date, checks part using MaintenanceUtil te get healthy/warning/critical status
   public String checkHealth(LocalDate date) {
     return checkPartHealth(this, date);
   }
 
+  // Returns years left until required maintenance
   public int getYearsLeft(LocalDate currentDate) {
     return getPartYearsLeft(this, currentDate);
   }

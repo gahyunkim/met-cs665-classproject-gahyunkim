@@ -9,6 +9,7 @@ import java.util.List;
 
 public class WarningAircraftState extends MaintenanceUtil implements AircraftState {
   private Aircraft aircraft;
+  private List<Part> warningParts;
   private PartsInventory inventory;
 
   public WarningAircraftState(Aircraft aircraft) {
@@ -16,17 +17,20 @@ public class WarningAircraftState extends MaintenanceUtil implements AircraftSta
     this.inventory = aircraft.getInventory();
   }
 
+  // Assesses and changes state appropriately based on critical/warning/healthy status
+  // If status is same, gets list of parts with warnings, needing maintenance soon
   public void evaluate() {
     PartsInventory inventory = aircraft.getInventory();
     if (inventory.getStatus().equalsIgnoreCase("critical")) {
       aircraft.setState(aircraft.getCriticalAircraftState());
-      aircraft.evaluate();
+      aircraft.checkHealth();
       return;
     } else if (inventory.getStatus().equalsIgnoreCase("healthy")) {
       aircraft.setState(aircraft.getHealthyAircraftState());
-      aircraft.evaluate();
+      aircraft.checkHealth();
       return;
     } else {
+      warningParts = inventory.getWarningParts();
       return;
     }
   }
@@ -34,11 +38,9 @@ public class WarningAircraftState extends MaintenanceUtil implements AircraftSta
   public void printResults() {
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     System.out.println("WARNING - Please schedule maintenance for following:");
-
-    for (Part part: inventory.getWarningParts()) {
+    for (Part part: warningParts) {
       printMaintenance(part);
     }
-
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 

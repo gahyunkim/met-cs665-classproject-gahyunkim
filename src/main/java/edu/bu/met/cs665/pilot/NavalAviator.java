@@ -12,6 +12,7 @@ public class NavalAviator implements Pilot {
     this.name = name;
   }
 
+  // When receiving mission, Air Force pilot receives its info and is assigned to it
   public void update(Mission mission) {
     System.out.println("\t> Naval Aviator " + name + " received "
         + mission.getTypeName() + " mission.");
@@ -25,6 +26,10 @@ public class NavalAviator implements Pilot {
 
   public void setMission(Mission mission) {
     this.mission = mission;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public String getName() {

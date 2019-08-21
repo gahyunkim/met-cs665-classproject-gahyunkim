@@ -93,7 +93,7 @@ public class Aircraft {
       aircraft.setEngineThrust(engineThrust);
       aircraft.setWeight(weight);
 
-      aircraft.evaluate();
+      aircraft.checkHealth();
 
       return aircraft;
     }
@@ -145,6 +145,10 @@ public class Aircraft {
     return mission;
   }
 
+  public void removeMission() {
+    mission = null;
+  }
+
   public void notifyPilots() {
     if (mission == null) {
       System.out.println("Currently no tasked mission");
@@ -181,7 +185,7 @@ public class Aircraft {
     return refuelMethod;
   }
 
-  public void evaluate() {
+  public void checkHealth() {
     state.evaluate();
   }
 

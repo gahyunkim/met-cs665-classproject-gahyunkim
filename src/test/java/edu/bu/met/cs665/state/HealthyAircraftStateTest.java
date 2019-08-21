@@ -57,7 +57,7 @@ public class HealthyAircraftStateTest {
 
   @Test
   public void getStateAfterMaintenance() {
-    F22.evaluate();
+    F22.checkHealth();
     F22.performMaintenance();
     assertEquals("healthy", F22.getStatus());
   }

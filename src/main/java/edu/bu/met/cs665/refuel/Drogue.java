@@ -5,6 +5,7 @@ import edu.bu.met.cs665.RefuelMethod;
 
 public class Drogue implements RefuelMethod {
 
+  // Executes aerial refueling using probe-and-drogue method
   public void refuel(Aircraft aircraft) {
     System.out.println("\t> Operator extending drogue basket");
     System.out.println("\t> Drogue fully extended");

@@ -5,6 +5,7 @@ import edu.bu.met.cs665.RefuelMethod;
 
 public class Boom implements RefuelMethod {
 
+  // Executes aerial refueling using boom method
   public void refuel(Aircraft aircraft) {
     System.out.println("\t> Operator navigating boom");
     System.out.println("\t> Boom latched in position");

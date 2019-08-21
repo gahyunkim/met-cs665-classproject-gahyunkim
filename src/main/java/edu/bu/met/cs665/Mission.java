@@ -14,7 +14,6 @@ public class Mission {
   private String landingBase;
 
   public Mission(String typeName) {
-    this.typeName = typeName;
     switch (typeName) {
       case "attack":
         type = new AttackMission();
@@ -65,6 +64,5 @@ public class Mission {
     return type.getDescription()
         + "\n\t\t\t\tTakeoff Base: " + takeoffBase
         + "\n\t\t\t\tLanding Base: " + landingBase;
-
   }
 }
