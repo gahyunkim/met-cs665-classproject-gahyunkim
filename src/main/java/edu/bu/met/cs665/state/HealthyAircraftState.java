@@ -8,7 +8,7 @@ import edu.bu.met.cs665.parts.PartsInventory;
 
 public class HealthyAircraftState extends MaintenanceUtil implements AircraftState {
   private Aircraft aircraft;
-  private Part immediatePart;
+  private Part immediatePart = null;
   private int yearsLeft;
 
   public HealthyAircraftState(Aircraft aircraft) {

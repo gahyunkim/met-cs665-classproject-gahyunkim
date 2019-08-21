@@ -5,6 +5,7 @@ import edu.bu.met.cs665.AircraftState;
 import edu.bu.met.cs665.Part;
 import edu.bu.met.cs665.parts.MaintenanceUtil;
 import edu.bu.met.cs665.parts.PartsInventory;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WarningAircraftState extends MaintenanceUtil implements AircraftState {
@@ -13,6 +14,7 @@ public class WarningAircraftState extends MaintenanceUtil implements AircraftSta
 
   public WarningAircraftState(Aircraft aircraft) {
     this.aircraft = aircraft;
+    warningParts = new ArrayList<>();
   }
 
   // Assesses and changes state appropriately based on critical/warning/healthy status
