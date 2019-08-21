@@ -32,7 +32,7 @@ public class Main {
     engine.setStartDate(LocalDate.of(2000, Month.APRIL, 1));
 
 
-    /********************
+    /*******************.
      * BUILDER W/ SPECS *
      ********************/
     // Building raptor aircraft with specifications and parts
@@ -71,7 +71,7 @@ public class Main {
     raptor.refuel();
 
 
-    /**********************************
+    /*********************************.
      * MISSION TASKING & NOTIFICATION *
      **********************************/
     // Adding pilots assigned to raptor who will be subscribed to mission notifications
