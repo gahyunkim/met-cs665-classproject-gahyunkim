@@ -32,4 +32,9 @@ public class MaintenanceUtil {
     System.out.println("- Tuning up " + part.getName() + " . . .");
     part.setStartDate(date);
   }
+
+  public void printMaintenance(Part part, LocalDate date) {
+    System.out.println("Part " + part.getName() + " inspection");
+    System.out.print(" due in " + part.getYearsLeft(date));
+  }
 }

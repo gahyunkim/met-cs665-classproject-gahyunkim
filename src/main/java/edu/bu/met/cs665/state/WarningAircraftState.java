@@ -10,11 +10,9 @@ import java.util.List;
 public class WarningAircraftState extends MaintenanceUtil implements AircraftState {
   private Aircraft aircraft;
   private List<Part> warningParts;
-  private PartsInventory inventory;
 
   public WarningAircraftState(Aircraft aircraft) {
     this.aircraft = aircraft;
-    this.inventory = aircraft.getInventory();
   }
 
   // Assesses and changes state appropriately based on critical/warning/healthy status
@@ -35,6 +33,7 @@ public class WarningAircraftState extends MaintenanceUtil implements AircraftSta
     }
   }
 
+  // Prints critical parts needing maintenance soon
   public void printResults() {
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     System.out.println("WARNING - Please schedule maintenance for following:");
@@ -44,20 +43,21 @@ public class WarningAircraftState extends MaintenanceUtil implements AircraftSta
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 
+  // Prints part and years left until required maintenance
   private void printMaintenance(Part part) {
-    System.out.println("Part " + part.getName() + " inspection");
-    System.out.print(" due in " + inventory.getYearsLeft(part));
+    printMaintenance(part, aircraft.getDate());
   }
 
+  // Performs maintenance on warning parts
   public void performMaintenance() {
-    List<Part> partList = aircraft.getInventory().getParts();
-    for (Part part : partList) {
+    for (Part part : warningParts) {
       performPartMaintenance(part, aircraft.getDate());
     }
     aircraft.setState(aircraft.getHealthyAircraftState());
     System.out.println("\nMaintenance Complete!\n");
   }
 
+  // Retrieves warning status name
   public String get() {
     return "warning";
   }

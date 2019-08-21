@@ -10,11 +10,9 @@ import java.util.List;
 public class CriticalAircraftState extends MaintenanceUtil implements AircraftState {
   private Aircraft aircraft;
   private List<Part> criticalParts;
-  private PartsInventory inventory;
 
   public CriticalAircraftState(Aircraft aircraft) {
     this.aircraft = aircraft;
-    this.inventory = aircraft.getInventory();
   }
 
   // Assesses and changes state appropriately based on critical/warning/healthy status
@@ -47,13 +45,11 @@ public class CriticalAircraftState extends MaintenanceUtil implements AircraftSt
 
   // Prints part and years left until required maintenance
   private void printMaintenance(Part part) {
-    System.out.println("Part " + part.getName() + " inspection");
-    System.out.print(" due in " + inventory.getYearsLeft(part));
+    printMaintenance(part, aircraft.getDate());
   }
 
   // Performs immediate maintenance on critical parts
   public void performMaintenance() {
-    List<Part> criticalParts = aircraft.getInventory().getCriticalParts();
     for (Part part : criticalParts) {
       performPartMaintenance(part, aircraft.getDate());
     }
