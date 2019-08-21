@@ -14,6 +14,9 @@ import java.util.List;
 
 public class Aircraft {
 
+  // Aircraft builder ensures that minimum specs are defined when creating aircraft (listed below)
+  // The aircraft can then have more detailed information such as additional parts listing.
+  // Builder requires engine and radar parts at a minimum to be defined
   public static class Builder {
 
     private String modelName;
@@ -79,6 +82,7 @@ public class Aircraft {
       return this;
     }
 
+    // Assembles and returns aircraft with given specifications
     public Aircraft build() {
       Aircraft aircraft = new Aircraft();
 
@@ -93,12 +97,14 @@ public class Aircraft {
       aircraft.setEngineThrust(engineThrust);
       aircraft.setWeight(weight);
 
+      // Assesses health based on parts to assign proper state to aircraft
       aircraft.checkHealth();
 
       return aircraft;
     }
   }
 
+  // Default date is current date
   private LocalDate date = LocalDate.now();
 
   private String modelName;
@@ -123,6 +129,8 @@ public class Aircraft {
   Mission mission;
   List<Pilot> pilotList;
 
+  // Constructor is private so that when creating aircraft, user must use builder
+  // with the minimum required specs
   private Aircraft() {
     inventory = new PartsInventory(date);
     healthyAircraftState = new HealthyAircraftState(this);
@@ -133,6 +141,7 @@ public class Aircraft {
     refuelMethod = new Drogue();
   }
 
+  // Assigns mission to aircraft
   public void setMission(Mission mission) {
     System.out.println("\n/////////////////////////////////////////");
     System.out.println("* Tasked " + modelName + " with "
@@ -149,6 +158,7 @@ public class Aircraft {
     mission = null;
   }
 
+  // Notifies delegated pilots of mission, does nothing if no mission is assigned
   public void notifyPilots() {
     if (mission == null) {
       System.out.println("Currently no tasked mission");
@@ -172,11 +182,13 @@ public class Aircraft {
     return pilotList;
   }
 
+  // Executes refueling using set method of refueling (drogue by default)
   public void refuel() {
     System.out.println("\nStarting " + refuelMethod.getName() + " refueling process:");
     refuelMethod.refuel(this);
   }
 
+  // Interchanges refueling method
   public void setRefuelMethod(RefuelMethod method) {
     this.refuelMethod = method;
   }
@@ -185,23 +197,29 @@ public class Aircraft {
     return refuelMethod;
   }
 
+  // Evaluates status of aircraft based on part maintenance required
+  // Sets/changes state of aircraft based on results
   public void checkHealth() {
     state.evaluate();
   }
 
+  // Prints results of health assessment
   public void printResults() {
     state.printResults();
   }
 
+  // Performs required maintenance based on health
   public void performMaintenance() {
     System.out.println("Starting maintenance");
     state.performMaintenance();
   }
 
+  // Returns status of aircraft based on part maintenance (healthy/warning/critical)
   public String getStatus() {
     return state.get();
   }
 
+  // Sets "current date" to given date
   public void setDate(LocalDate date) {
     this.date = date;
     inventory.setDate(date);
@@ -227,16 +245,19 @@ public class Aircraft {
     return id;
   }
 
+  // Changes radar
   public void setRadar(Radar radar) {
     inventory.add(radar);
     state.evaluate();
   }
 
+  // Changes engine
   public void setEngine(Engine engine) {
     inventory.add(engine);
     state.evaluate();
   }
 
+  // Adds part to inventory
   public void addPart(Part part) {
     inventory.add(part);
     state.evaluate();
@@ -306,6 +327,7 @@ public class Aircraft {
     return inventory;
   }
 
+  // Prints aircraft specifications
   public void printSpecs() {
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     System.out.println("| Aircraft Model: " + modelName);
@@ -321,6 +343,7 @@ public class Aircraft {
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 
+  // Prints aircraft inventory
   public void printParts() {
     System.out.println("| PARTS: ");
     for (Part part: inventory.getParts()) {
@@ -328,6 +351,7 @@ public class Aircraft {
     }
   }
 
+  // Prints aircraft health status
   public void printStatus() {
     System.out.println("**********************************");
     System.out.println("* " + modelName + " id: #" + id + " - STATUS: "

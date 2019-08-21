@@ -14,6 +14,7 @@ public class Mission {
   private String landingBase;
 
   public Mission(String typeName) {
+    this.typeName = typeName;
     switch (typeName) {
       case "attack":
         type = new AttackMission();
