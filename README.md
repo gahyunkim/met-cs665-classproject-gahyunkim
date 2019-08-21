@@ -135,6 +135,9 @@ To compile and run main script:
 
 Attached PDF in Blackboard submission.
 
+Google Slides: 
+https://docs.google.com/presentation/d/1RFLnD7ZVXQMEcErWDPfdsdhp-gpkv-1VSek5NNPfAe0/edit?usp=sharing
+
 ## Task 5: Recording
 
 Attached MP4 in Blackboard submission.
