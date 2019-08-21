@@ -26,6 +26,6 @@ public interface Part {
   // Retrieves health status of part (healthy/warning/critical)
   String checkHealth(LocalDate date);
 
-  // Retrieves # of years left until required maintenance 
+  // Retrieves # of years left until required maintenance
   int getYearsLeft(LocalDate date);
 }
