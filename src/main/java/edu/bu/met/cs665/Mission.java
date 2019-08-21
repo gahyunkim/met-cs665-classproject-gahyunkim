@@ -13,6 +13,8 @@ public class Mission {
   private String takeoffBase;
   private String landingBase;
 
+  // Based on mission name,
+  // returns appropriate Mission object that contains its objective description
   public Mission(String typeName) {
     this.typeName = typeName;
     switch (typeName) {
@@ -61,6 +63,7 @@ public class Mission {
     return typeName;
   }
 
+  // Returns mission objective with takeoff and landing bases
   public String getDescription() {
     return type.getDescription()
         + "\n\t\t\t\tTakeoff Base: " + takeoffBase
