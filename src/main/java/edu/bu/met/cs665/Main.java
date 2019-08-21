@@ -35,6 +35,9 @@ public class Main {
     /*******************.
      * BUILDER W/ SPECS *
      ********************/
+    System.out.println("\n--------------------------------------------------------------------");
+    System.out.println("BUILDING AIRCRAFT w/ Specifications:");
+    System.out.println("--------------------------------------------------------------------");
     // Building raptor aircraft with specifications and parts
     Aircraft raptor = new Aircraft.Builder(id)
         .withModelName(modelName)
@@ -56,6 +59,9 @@ public class Main {
     /***************
      * MAINTENANCE *
      ***************/
+    System.out.println("\n--------------------------------------------------------------------");
+    System.out.println("AIRCRAFT HEALTH & MAINTENANCE");
+    System.out.println("--------------------------------------------------------------------");
     // Printing aircraft health status, performing maintenance, and checking new status
     raptor.printStatus();
     raptor.performMaintenance();
@@ -65,6 +71,9 @@ public class Main {
     /*************
      * REFUELING *
      *************/
+    System.out.println("\n--------------------------------------------------------------------");
+    System.out.println("AERIAL REFUELING");
+    System.out.println("--------------------------------------------------------------------");
     // Refuel aircraft using default drogue method, changing it with boom, and refueling again
     raptor.refuel();
     raptor.setRefuelMethod(new Boom());
@@ -74,6 +83,9 @@ public class Main {
     /*********************************.
      * MISSION TASKING & NOTIFICATION *
      **********************************/
+    System.out.println("\n--------------------------------------------------------------------");
+    System.out.println("MISSION TASKING & NOTIFICATION");
+    System.out.println("--------------------------------------------------------------------");
     // Adding pilots assigned to raptor who will be subscribed to mission notifications
     NavalAviator george = new NavalAviator("Lieutenant Young");
     AirForcePilot mike = new AirForcePilot("Captain Byon");

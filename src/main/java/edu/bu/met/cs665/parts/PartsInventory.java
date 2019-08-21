@@ -118,12 +118,12 @@ public class PartsInventory extends MaintenanceUtil {
 
   // Returns current inventory of parts and its # years left until maintenance is required
   public void print() {
-    System.out.println("\n------------------------------------------------");
+    System.out.println("\n--------------------------------------------");
     System.out.println("| Parts Inventory");
     partsYears.forEach((part, years) -> {
       System.out.println("|\t" + part.getName() + ": ");
       System.out.println("|\t\t" + years + " years left until required maintenance");
     });
-    System.out.println("------------------------------------------------\n");
+    System.out.println("--------------------------------------------\n");
   }
 }

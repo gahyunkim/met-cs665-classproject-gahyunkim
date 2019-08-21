@@ -143,7 +143,7 @@ public class Aircraft {
 
   // Assigns mission to aircraft
   public void setMission(Mission mission) {
-    System.out.println("\n/////////////////////////////////////////");
+    System.out.println("/////////////////////////////////////////");
     System.out.println("* Tasked " + modelName + " with "
         + mission.getTypeName() + " mission *");
     System.out.println("/////////////////////////////////////////\n");
@@ -184,7 +184,7 @@ public class Aircraft {
 
   // Executes refueling using set method of refueling (drogue by default)
   public void refuel() {
-    System.out.println("\nStarting " + refuelMethod.getName() + " refueling process:");
+    System.out.println("Starting " + refuelMethod.getName() + " refueling process:");
     refuelMethod.refuel(this);
   }
 
